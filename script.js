@@ -11,5 +11,14 @@ form.addEventListener('submit', function(event) {
   const itemName = document.getElementById('item-name').value.trim();
   const itemQuantity = parseInt(document.getElementById('item-quantity').value);
 
-  
+    
+  if (itemName && itemQuantity > 0) {
+    
+    groceryItems.push({
+      name: itemName,
+      quantity: itemQuantity,
+      purchased: false 
+    });
+}
+
 });
