@@ -56,7 +56,7 @@ const checkbox = document.createElement('input');
 
     checkbox.addEventListener('change', function() {
       item.purchased = checkbox.checked;
-      displayItems(); // Refresh the list
+      displayItems(); 
     });
 
 const itemText = document.createElement('span');
@@ -66,3 +66,8 @@ itemText.textContent = `${item.name} (${item.quantity})`;
 const removeButton = document.createElement('button');
 removeButton.textContent = 'Remove';
 removeButton.classList.add('remove-btn');
+
+removeButton.addEventListener('click', function() {
+    groceryItems.splice(index, 1); 
+    displayItems(); 
+});
