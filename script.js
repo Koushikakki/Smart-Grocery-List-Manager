@@ -61,3 +61,8 @@ const checkbox = document.createElement('input');
 
 const itemText = document.createElement('span');
 itemText.textContent = `${item.name} (${item.quantity})`;
+
+
+const removeButton = document.createElement('button');
+removeButton.textContent = 'Remove';
+removeButton.classList.add('remove-btn');
