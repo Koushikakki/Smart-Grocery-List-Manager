@@ -49,3 +49,7 @@ itemList.innerHTML = '';
 
 }
 )};
+
+const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = item.purchased;
