@@ -71,3 +71,21 @@ removeButton.addEventListener('click', function() {
     groceryItems.splice(index, 1); 
     displayItems(); 
 });
+
+const leftPart = document.createElement('div');
+leftPart.classList.add('left');
+leftPart.appendChild(checkbox);
+leftPart.appendChild(itemText);
+
+        
+li.appendChild(leftPart);
+li.appendChild(removeButton);
+
+        
+itemList.appendChild(li);
+
+        
+if (!item.purchased) {
+remaining++;
+}
+   
