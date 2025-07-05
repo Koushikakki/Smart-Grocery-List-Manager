@@ -19,6 +19,33 @@ form.addEventListener('submit', function(event) {
       quantity: itemQuantity,
       purchased: false 
     });
+
+    form.reset();
+
+    displayItems();
+
+
 }
 
 });
+
+
+
+function displayItems(){
+
+itemList.innerHTML = '';
+
+  let remaining = 0; 
+
+  
+  groceryItems.forEach(function(item, index) {
+    
+    const li = document.createElement('li');
+
+    
+    if (item.purchased) {
+      li.classList.add('purchased');
+    }
+
+}
+)};
