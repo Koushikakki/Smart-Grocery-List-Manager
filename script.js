@@ -58,3 +58,6 @@ const checkbox = document.createElement('input');
       item.purchased = checkbox.checked;
       displayItems(); // Refresh the list
     });
+
+const itemText = document.createElement('span');
+itemText.textContent = `${item.name} (${item.quantity})`;
