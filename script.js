@@ -5,87 +5,59 @@ const remainingCount = document.getElementById('remaining-count');
 
 let groceryItems = [];
 
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('item-name').value.trim();
+  const quantity = parseInt(document.getElementById('item-quantity').value);
 
-  const itemName = document.getElementById('item-name').value.trim();
-  const itemQuantity = parseInt(document.getElementById('item-quantity').value);
-
-    
-  if (itemName && itemQuantity > 0) {
-    
-    groceryItems.push({
-      name: itemName,
-      quantity: itemQuantity,
-      purchased: false 
-    });
-
+  if (name && quantity > 0) {
+    groceryItems.push({ name, quantity, purchased: false });
     form.reset();
-
-    displayItems();
-
-
-}
-
+    updateList();
+  }
 });
 
+function updateList() {
+  list.innerHTML = '';
+  let remaining = 0;
 
-
-function displayItems(){
-
-itemList.innerHTML = '';
-
-  let remaining = 0; 
-
-  
-  groceryItems.forEach(function(item, index) {
-    
+  groceryItems.forEach((item, index) => {
     const li = document.createElement('li');
+    li.className = item.purchased ? 'purchased' : '';
 
-    
-    if (item.purchased) {
-      li.classList.add('purchased');
-    }
+    const leftDiv = document.createElement('div');
+    leftDiv.className = 'left';
 
-}
-)};
-
-const checkbox = document.createElement('input');
+    const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = item.purchased;
-
-    checkbox.addEventListener('change', function() {
+    checkbox.addEventListener('change', () => {
       item.purchased = checkbox.checked;
-      displayItems(); 
+      updateList();
     });
 
-const itemText = document.createElement('span');
-itemText.textContent = `${item.name} (${item.quantity})`;
+    const span = document.createElement('span');
+    span.textContent = `${item.name} (${item.quantity})`;
 
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'Remove';
+    removeBtn.className = 'remove-btn';
+    removeBtn.addEventListener('click', () => {
+      groceryItems.splice(index, 1);
+      updateList();
+    });
 
-const removeButton = document.createElement('button');
-removeButton.textContent = 'Remove';
-removeButton.classList.add('remove-btn');
+    leftDiv.appendChild(checkbox);
+    leftDiv.appendChild(span);
 
-removeButton.addEventListener('click', function() {
-    groceryItems.splice(index, 1); 
-    displayItems(); 
-});
+    li.appendChild(leftDiv);
+    li.appendChild(removeBtn);
 
-const leftPart = document.createElement('div');
-leftPart.classList.add('left');
-leftPart.appendChild(checkbox);
-leftPart.appendChild(itemText);
+    list.appendChild(li);
 
-        
-li.appendChild(leftPart);
-li.appendChild(removeButton);
+    if (!item.purchased) remaining++;
+  });
 
-        
-itemList.appendChild(li);
-
-        
-if (!item.purchased) {
-remaining++;
+  totalCount.textContent = groceryItems.length;
+  remainingCount.textContent = remaining;
 }
-   
