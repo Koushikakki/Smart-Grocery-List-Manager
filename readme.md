@@ -7,13 +7,14 @@ Designed for local supermarket websites to help customers **add**, **track**, an
 
 ##  Features
 
-✅ Add grocery items with name and quantity  
-✅ Display the grocery list in real-time  
-✅ Mark items as purchased (strikethrough effect)  
-✅ Remove items from the list  
-✅ Live summary:  
+ Add grocery items with name and quantity  
+ Display the grocery list in real-time  
+ Mark items as purchased (strikethrough effect)  
+ Remove items from the list  
+ Live summary:  
   • Total items  
   • Remaining (unpurchased) items  
+ The data will be stored in local storage to avoid loss of data
 
 ---
 
