@@ -12,6 +12,7 @@ form.addEventListener('submit', (e) => {
 
   if (name && quantity > 0) {
     groceryItems.push({ name, quantity, purchased: false });
+    saveToLocalStorage(items);
     form.reset();
     updateList();
   }
@@ -61,3 +62,6 @@ function updateList() {
   totalCount.textContent = groceryItems.length;
   remainingCount.textContent = remaining;
 }
+
+
+
