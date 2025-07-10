@@ -6,26 +6,22 @@ function setupEventListeners(items) {
 
     const name = document.getElementById('item-name').value.trim();
     const quantity = parseInt(document.getElementById('item-quantity').value);
+    const category = document.getElementById('item-category').value;
+    const priority = document.getElementById('item-priority').checked;
+    const reminderMin = parseInt(document.getElementById('reminder-time').value);
 
-    if (name && quantity > 0) {
-      items.push({ name, quantity, purchased: false });
+    if (name && quantity > 0 && category) {
+      const item = { name, quantity, category, priority, purchased: false };
+      items.push(item);
       saveToLocalStorage(items);
+      renderList(items);
       form.reset();
-      renderList(items);
-    }
-  });
 
-  document.getElementById('clear-all').addEventListener('click', () => {
-    if (confirm("Are you sure you want to clear all items?")) {
-      items.length = 0;
-      saveToLocalStorage(items);
-      renderList(items);
+      if (!isNaN(reminderMin) && reminderMin > 0) {
+        setTimeout(() => {
+          alert(`⏰ Reminder: Buy ${item.name} (${item.category})`);
+        }, reminderMin * 60000);
+      }
     }
-  });
-
-  document.getElementById('mark-all').addEventListener('click', () => {
-    items.forEach(item => item.purchased = true);
-    saveToLocalStorage(items);
-    renderList(items);
   });
 }

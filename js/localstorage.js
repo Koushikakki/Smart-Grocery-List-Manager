@@ -3,6 +3,6 @@ function saveToLocalStorage(items) {
 }
 
 function loadFromLocalStorage() {
-  const saved = localStorage.getItem('groceryItems');
-  return saved ? JSON.parse(saved) : [];
+  const stored = localStorage.getItem('groceryItems');
+  return stored ? JSON.parse(stored) : [];
 }

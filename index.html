@@ -7,12 +7,42 @@
 </head>
 <body>
   <div class="container">
-    <h1> Grocery List</h1>
+    <h1>Grocery List</h1>
+
     <form id="grocery-form">
-      <input type="text" id="item-name" placeholder="Item name" required>
-      <input type="number" id="item-quantity" placeholder="Quantity" min="1" required>
-      <button type="submit">Add Item</button>
-    </form>
+  <input type="text" id="item-name" placeholder="Item name" required>
+  <input type="number" id="item-quantity" placeholder="Quantity" min="1" required>
+  
+  <select id="item-category" required>
+    <option value="">Select Category</option>
+    <option value="Fruits">Fruits</option>
+    <option value="Vegetables">Vegetables</option>
+    <option value="Dairy">Dairy</option>
+    <option value="Bakery">Bakery</option>
+  </select>
+
+  <input type="number" id="reminder-time" placeholder="Reminder (min)" min="1" />
+
+  <div class="form-row">
+    <div class="priority-inline">
+      <input type="checkbox" id="item-priority" class="small-checkbox">
+      <label for="item-priority"> High Priority</label>
+    </div>
+    <button type="submit">Add Item</button>
+  </div>
+</form>
+
+
+    <div class="search-filter-wrapper">
+      <input type="text" id="search" placeholder="Search items..." />
+      <select id="category-filter">
+        <option value="All">All</option>
+        <option value="Fruits">Fruits</option>
+        <option value="Vegetables">Vegetables</option>
+        <option value="Dairy">Dairy</option>
+        <option value="Bakery">Bakery</option>
+      </select>
+    </div>
 
     <ul id="grocery-list"></ul>
 
@@ -22,6 +52,10 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="js/localstorage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/filter.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
